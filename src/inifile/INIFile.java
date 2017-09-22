@@ -28,17 +28,27 @@ public class INIFile {
             sections.put(wrappedSections.group(1), new Sezione(parameters));
         }
     }
+    
+    public void fillSection(Map<String, Sezione> parameters){
+        this.sections = parameters;
+    }
+    
+    public void addSection(String key, Sezione value){
+        sections.put(key, value);
+    }
+    
+    public Sezione getSection(String key){
+        return sections.get(key);
+    }
+    
+    public Sezione removeSection(String key){
+        return sections.remove(key);
+    }
 
     @Override
     public String toString() {
         return sections.entrySet().stream()
-                                  .map( entry -> "Sezione: " + entry.getKey() + entry.getValue().toString())
+                                  .map( entry -> "[" + entry.getKey() + "]\n" + entry.getValue())
                                   .collect(Collectors.joining("\n"));
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(new INIFile("file_ini.txt").toString());
-    }
-    
-    
+    }    
 }
