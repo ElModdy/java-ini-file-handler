@@ -45,7 +45,12 @@ public class IniHandler implements ConfHandler{
        new Out(file.getAbsolutePath()).print(conf.getSections()
                                                  .entrySet()
                                                  .stream()
-                                                 .map( entry -> "[" + entry.getKey() + "]\n" + entry.getValue())
+                                                 .map( entry -> "[" + entry.getKey() + "]\n" + entry.getValue()
+                                                                                                    .getParameters()
+                                                                                                    .entrySet()
+                                                                                                    .stream()
+                                                                                                    .map( e -> e.getKey() + "=" + e.getValue())
+                                                                                                    .collect(Collectors.joining("\n")))
                                                  .collect(Collectors.joining("\n")));
     }
     
