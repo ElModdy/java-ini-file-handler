@@ -1,7 +1,6 @@
 package inifile;
 
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Sezione {
     
@@ -27,10 +26,7 @@ public class Sezione {
         return parameters.remove(key);
     }
     
-    @Override
-    public String toString() {
-        return parameters.entrySet().stream()
-                                    .map( e -> e.getKey() + "=" + e.getValue())
-                                    .collect(Collectors.joining("\n"));
-    }   
+    public Map<String, String> getParameters(){
+        return parameters;
+    }
 }
