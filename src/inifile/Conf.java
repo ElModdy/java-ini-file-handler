@@ -2,6 +2,8 @@ package inifile;
 
 import java.util.Map;
 
+// É la classe che contiene tutte le "informazioni" presenti in un file
+//  di configurazione esente da formattazioni di alcun tipo.
 
 public class Conf {
     Map<String, Sezione> sections;

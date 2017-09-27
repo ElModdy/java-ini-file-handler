@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inifile;
 
 import java.io.File;
 
-/**
- *
- * @author usr
- */
+// É la struttura base di ogni lettore e scrittore di un qualsiasi file di 
+//  configurazione indipendente dal formato con cui esso viene scritto.
+
 public interface ConfHandler {
     public Conf read(File file);
     

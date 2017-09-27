@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inifile;
 
 import edu.princeton.cs.algs4.In;
@@ -14,10 +9,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author usr
- */
+// É un'implementazione del ConfHandler relativo ai file di configurazione
+//  formattati in ini.
+
 public class IniHandler implements ConfHandler{
 
     @Override
