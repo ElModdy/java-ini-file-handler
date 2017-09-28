@@ -1,0 +1,11 @@
+<section name="Gianni">
+	<parameter name="colore_preferito">giallo</parameter>
+	<parameter name="animale_preferito">canarino</parameter>
+	<parameter name="anni">26</parameter>
+</section>
+
+<section name="Francesca">
+	<parameter name="colore_preferito">blu</parameter>
+	<parameter name="animale_preferito">elefante</parameter>
+	<parameter name="anni">44</parameter>
+</section>

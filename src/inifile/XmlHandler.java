@@ -11,18 +11,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-// É un'implementazione del ConfHandler relativo ai file di configurazione
-//  formattati in ini.
-
-public class IniHandler implements ConfHandler{
-
-    @Override
+public class XmlHandler implements ConfHandler{
+    
     public Conf read(InputStream source) {
         HashMap<String, Sezione> sections = new HashMap();
-        Matcher wrappedSections = Pattern.compile("\\[(.*?)\\]([^\\[]+)")
+        Matcher wrappedSections = Pattern.compile("<section\\s+name\\s*=\\s*\"(\\w*)\"\\s*>((\\s|.)*?)(?=<\\/s)")
                                          .matcher(new In(new Scanner(source))
                                                                 .readAll());
-        Pattern parametersRegex = Pattern.compile("\\s([^(\\s|#))]+?)=([^\\s]+)");
+        Pattern parametersRegex = Pattern.compile("<parameter\\s+name\\s*=\\s*\"(\\w*)\"\\s*>(\\w*)");
         Matcher wrappedParameters;
         Map<String, String> parameters;
         while (wrappedSections.find()) {
@@ -41,13 +37,12 @@ public class IniHandler implements ConfHandler{
        new Out(source).print(conf.getSections()
                                                  .entrySet()
                                                  .stream()
-                                                 .map( entry -> "[" + entry.getKey() + "]\n" + entry.getValue()
+                                                 .map( entry -> "<section name=\"" + entry.getKey() + "\">\n" + entry.getValue()
                                                                                                     .getParameters()
                                                                                                     .entrySet()
                                                                                                     .stream()
-                                                                                                    .map( e -> e.getKey() + "=" + e.getValue())
+                                                                                                    .map( e -> "<parameter name=\"" + e.getKey() + "\">" + e.getValue() + "</parameter>")
                                                                                                     .collect(Collectors.joining("\n")))
                                                  .collect(Collectors.joining("\n")));
     }
-    
 }
