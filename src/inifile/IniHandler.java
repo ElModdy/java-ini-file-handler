@@ -45,7 +45,7 @@ public class IniHandler implements ConfHandler{
                                                                                                     .getParameters()
                                                                                                     .entrySet()
                                                                                                     .stream()
-                                                                                                    .map( e -> e.getKey() + "=" + e.getValue())
+                                                                                                    .map( e -> "\t" + e.getKey() + "=" + e.getValue())
                                                                                                     .collect(Collectors.joining("\n")))
                                                  .collect(Collectors.joining("\n")));
     }

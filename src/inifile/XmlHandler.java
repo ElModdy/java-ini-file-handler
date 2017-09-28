@@ -41,7 +41,7 @@ public class XmlHandler implements ConfHandler{
                                                                                                     .getParameters()
                                                                                                     .entrySet()
                                                                                                     .stream()
-                                                                                                    .map( e -> "<parameter name=\"" + e.getKey() + "\">" + e.getValue() + "</parameter>")
+                                                                                                    .map( e -> "\t<parameter name=\"" + e.getKey() + "\">" + e.getValue() + "</parameter>")
                                                                                                     .collect(Collectors.joining("\n")))
                                                  .collect(Collectors.joining("\n")));
     }
